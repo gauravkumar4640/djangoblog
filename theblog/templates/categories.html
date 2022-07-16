@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if category_posts %}
+
+<h1>{{cats}} Category</h1>
+<hr>
+{% for post in category_posts %}
+
+
+<div class="list-group-item align-items-start col-lg-8 center">
+
+    <div class="d-flex w-100 justify-content-between">
+        <a href="{% url 'article-detail' post.pk  %}" >
+      <h5 class="mb-1">{{post.title}}</h5></a>
+      <small class="text-muted">{{post.post_date}}</small>
+    </div>
+      <p class="mb-1">{{post.title_tag}} - {{post.author.first_name}} {{post.author.last_name}}</p>
+    <p class="mb-1">{{post.body|slice:"200"|safe}}... <a href="{% url 'article-detail' post.pk  %}" >Read More</a></p>
+    {% if user.is_authenticated %}
+     <a href="{% url 'update_post' post.pk  %}" >Edit Post</a><br>
+    {% endif %}
+    <small class="text-muted">{{post.author.email}}</small>
+
+</div><br>
+
+{% endfor %}
+
+{% else %}
+<h2>Sorry this page doesn't exist !!</h2>
+{% endif %}
+{% endblock %}

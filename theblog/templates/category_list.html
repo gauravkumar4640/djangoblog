@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+Blog Categories
+{% endblock %}
+{% block content %}
+
+  <h2 class="card-title mb-4 text-center">Blog Categories</h2>
+<div class="card" style="width: 18rem; margin-left:auto;margin-right:auto; ">
+{% for item in cat_menu_list %}
+
+    <table class="table table-striped table-sm">
+    <tr>
+      <td> <a href="{% url 'category' item %}"> {{item}}</a></td>
+    </tr>
+</table>
+    {% endfor %}
+</div>
+
+    {% endblock %}
+

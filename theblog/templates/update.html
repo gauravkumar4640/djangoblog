@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+Update Blog Post
+{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+ {% if user.id == post.author.id %}
+<div class="card" style="width:55rem;margin-left:auto;margin-right:auto; ">
+  <div class="card-body">
+    <h2 class="card-title text-center">Update Blog Post</h2>
+
+<div class="form-group">
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    {{form.media}}
+    <button class="btn btn-info">Update</button>
+</form>
+</div>
+  </div>
+</div>
+{% else %}
+Your are not allowed here!...
+{% endif %}
+{% else %}
+Your are not allowed here!...
+{% endif %}
+
+{% endblock %}

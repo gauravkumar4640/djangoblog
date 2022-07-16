@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+Comment on Blog Post
+{% endblock %}
+{% block content %}
+
+
+
+<div class="card" style="width:25rem;margin-left:auto;margin-right:auto; ">
+  <div class="card-body">
+      <h2 class="card-title text-center">Add Comment...</h2>
+
+<div class="form-group">
+<form method="POST" >
+    {% csrf_token %}
+    {{form.as_p}}
+
+
+    <button class="btn btn-info">Post Comment</button>
+</form>
+</div>
+  </div>
+</div>
+
+
+{% endblock %}

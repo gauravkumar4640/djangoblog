@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Profile
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .card{
+    margin-left:auto;
+    margin-right:auto;
+    padding:0px;
+    }
+
+</style>
+<div class="card col-lg-6 mb-3 p-4">
+    <h1 class="mt-3">
+        <center>Edit Settings</center>
+    </h1>
+    <hr>
+    <br>
+    {{user.profile.bio}}
+    <br>
+    <br>
+
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+
+            <button class="btn btn-info mb-3">Update Profile</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

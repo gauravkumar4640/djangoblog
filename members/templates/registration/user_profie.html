@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<h1>User Profile</h1>
+<hr>
+        <div class="card mb-3" style="max-width: 440px;">
+            <div class="row g-0">
+                <div class="col-md-3">
+                    {% if page_user.profile_pic %}
+                    <img src="{{page_user.profile_pic.url}}" class="img-fluid rounded-start" alt="...">
+                    {% else %}
+                    <img src="{% static 'theblog/images/default-user-image.png' %}" class="img-fluid rounded-start" alt="...">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{page_user.user.first_name}} {{page_user.user.last_name}}</h5>
+                        <p class="small text-muted">
+
+                            {% if post.author.profile.fb_url %}
+                            <a href="{{page_user.user.profile.fb_url}}">facebook</a> |
+                            {% endif %}
+                            {% if post.author.profile.insta_url %}
+                            <a href="{{page_user.profile.insta_url}}">instagram</a> |
+                            {% endif %}
+                            {% if post.author.profile.linkedln_url %}
+
+                            <a href="{{page_user.profile.linkedln_url}}">linkedln</a> |
+                            {% endif %}
+                            {% if post.author.profile.twitter_url %}
+                            <a href="{{page_user.profile.twitter_url}}">twitter</a> |
+                            {% endif %}
+
+                        </p>
+                        <p class="card-text">{{page_user.user.profile.bio}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
